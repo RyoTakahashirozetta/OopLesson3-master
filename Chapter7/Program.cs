@@ -17,6 +17,7 @@ namespace Chapter7 {
 
             while (true) {
                 Console.WriteLine("1.登録 2.内容を表示 3.終了");
+                Console.Write(">");
                 var select = Console.ReadLine();
                 if (select == "1") {
                     Console.Write("\nKEYを入力：");
@@ -42,7 +43,7 @@ namespace Chapter7 {
                         }
                     }
                 }
-                else if(select == "3"){
+                else if (select == "3") {
                     Environment.Exit(0);
                 }
             }
