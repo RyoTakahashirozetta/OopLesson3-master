@@ -10,43 +10,29 @@ namespace Chapter7 {
     class Program {
         static void Main(string[] args) {
 
-            var dict = new Dictionary<string, List<string>>();
-            Console.WriteLine("**********************");
-            Console.WriteLine("* 辞書登録プログラム *");
-            Console.WriteLine("**********************");
+            var text = "Cozy lummox gives smart squid who asks for job pen";
+            Exercise1_1(text); //問題7.1.1
 
-            while (true) {
-                Console.WriteLine("1.登録 2.内容を表示 3.終了");
-                Console.Write(">");
-                var select = Console.ReadLine();
-                if (select == "1") {
-                    Console.Write("\nKEYを入力：");
-                    var key = Console.ReadLine();
 
-                    Console.Write("VALUEを入力：");
-                    var value = Console.ReadLine();
+        }
+        static void Exercise1_1(string text) {
+            var dict = new Dictionary<char, int>();
 
-                    if (dict.ContainsKey(key)) {
-                        dict[key].Add(value);
+            foreach (var t in text.ToUpper()) {
+                if ('A' <= t && t <= 'Z') {
+                    if (dict.ContainsKey(t)) {
+                        dict[t]++;
                     }
                     else {
-                        dict[key] = new List<string> { value };
+                        dict[t] = 1;
                     }
-
-                    Console.WriteLine("登録しました!");
-                    Console.WriteLine();
-                }
-                else if (select == "2") {
-                    foreach (var item in dict) {
-                        foreach (var term in item.Value) {
-                            Console.WriteLine("{0}:{1}", item.Key, term);
-                        }
-                    }
-                }
-                else if (select == "3") {
-                    Environment.Exit(0);
                 }
             }
+            var sorts = dict.OrderBy(s => s.Key);
+            foreach (var sort in sorts) {
+                Console.WriteLine($"'{sort.Key}'：{sort.Value}");
+            }
+             
         }
     }
 }
