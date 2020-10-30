@@ -5,8 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SendMailApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainWindow" Height="700" Width="800">
+
+
+
+    <Grid Background="LightBlue">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="90*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="件名：" VerticalAlignment="Center" FontSize="20"/>
+        <TextBlock Grid.Row="1" Text="To：" VerticalAlignment="Center" FontSize="20"/>
+        <TextBlock Grid.Row="2" Text="Cc：" VerticalAlignment="Center" FontSize="20"/>
+        <TextBlock Grid.Row="3" Text="Bcc:" VerticalAlignment="Center" FontSize="20"/>
+        <TextBlock Grid.Row="4" Text="本文：" VerticalAlignment="Center" FontSize="20"/>
+
+        <TextBox Grid.Row="0" Grid.Column="1" Margin="7"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="7"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="7"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Margin="7"/>
+        <TextBox Grid.Row="4" Grid.Column="1" Margin="7"/>
+
+        <StackPanel Grid.ColumnSpan="2" HorizontalAlignment="Right" Grid.Row="6"  Orientation="Horizontal">
+            <Button x:Name="SendButton" Content="送信" Margin="4" Width="120" FontSize="24"/>
+            <Button x:Name="CancelButton" Content="送信キャンセル" Margin="4" Width="150" FontSize="24"/>
+        </StackPanel>
+
     </Grid>
 </Window>
