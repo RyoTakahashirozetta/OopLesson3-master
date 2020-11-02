@@ -25,21 +25,26 @@
             <ColumnDefinition Width="90*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="件名：" VerticalAlignment="Center" FontSize="20"/>
-        <TextBlock Grid.Row="1" Text="To：" VerticalAlignment="Center" FontSize="20"/>
-        <TextBlock Grid.Row="2" Text="Cc：" VerticalAlignment="Center" FontSize="20"/>
-        <TextBlock Grid.Row="3" Text="Bcc:" VerticalAlignment="Center" FontSize="20"/>
-        <TextBlock Grid.Row="4" Text="本文：" VerticalAlignment="Center" FontSize="20"/>
+        <TextBlock Grid.Row="0" HorizontalAlignment="Right" Text="件名："
+                   VerticalAlignment="Center" FontSize="20"/>
+        <TextBlock Grid.Row="1" HorizontalAlignment="Right" Text="To："
+                   VerticalAlignment="Center" FontSize="20"/>
+        <TextBlock Grid.Row="2" HorizontalAlignment="Right" Text="Cc："
+                   VerticalAlignment="Center" FontSize="20"/>
+        <TextBlock Grid.Row="3" HorizontalAlignment="Right" Text="Bcc："
+                   VerticalAlignment="Center" FontSize="20"/>
+        <TextBlock Grid.Row="4" HorizontalAlignment="Right" Text="本文："
+                   VerticalAlignment="Center" FontSize="20"/>
 
-        <TextBox Grid.Row="0" Grid.Column="1" Margin="7"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="7"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Margin="7"/>
-        <TextBox Grid.Row="3" Grid.Column="1" Margin="7"/>
-        <TextBox Grid.Row="4" Grid.Column="1" Margin="7"/>
+        <TextBox x:Name="tbTitle" Grid.Row="0" Grid.Column="1" Margin="7"/>
+        <TextBox x:Name="tbTo" Grid.Row="1" Grid.Column="1" Margin="7"/>
+        <TextBox x:Name="tbCc" Grid.Row="2" Grid.Column="1" Margin="7"/>
+        <TextBox x:Name="tbBcc" Grid.Row="3" Grid.Column="1" Margin="7"/>
+        <TextBox x:Name="tbBody" Grid.Row="4" Grid.Column="1" Margin="7"/>
 
-        <StackPanel Grid.ColumnSpan="2" HorizontalAlignment="Right" Grid.Row="6"  Orientation="Horizontal">
-            <Button x:Name="SendButton" Content="送信" Margin="4" Width="120" FontSize="24"/>
-            <Button x:Name="CancelButton" Content="送信キャンセル" Margin="4" Width="150" FontSize="24"/>
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Right" Grid.Row="5"  Orientation="Horizontal">
+            <Button x:Name="btCancel" Content="キャンセル" Margin="10" Width="150" FontSize="24" Click="btCancel_Click"/>
+            <Button x:Name="btOK" Content="送信" Margin="10" Width="120" FontSize="24" Click="btOK_Click"/>
         </StackPanel>
 
     </Grid>
