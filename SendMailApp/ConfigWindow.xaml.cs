@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace SendMailApp {
     /// <summary>
@@ -35,6 +37,7 @@ namespace SendMailApp {
             cbSsl.IsChecked = cf.Ssl;
         }
 
+        //適用（更新）
         private void btApply_Click(object sender, RoutedEventArgs e) {
             (Config.GetInstance()).UpdataStatus(
                 tbSmtp.Text,
@@ -42,6 +45,7 @@ namespace SendMailApp {
                 tbPassWord.Password,
                 int.Parse(tbPort.Text),
                 cbSsl.IsChecked ?? false);
+
 
         }
 
@@ -67,5 +71,7 @@ namespace SendMailApp {
             cbSsl.IsChecked = cf.Ssl;
 
         }
+
+       
     }
 }
