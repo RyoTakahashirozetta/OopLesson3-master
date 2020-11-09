@@ -54,11 +54,11 @@ namespace SendMailApp {
         //設定データ更新
         public bool UpdataStatus(string smtp,string mailAddress, string passWord,
                                  int port,bool ssl) {
-            this.Smtp = Smtp;
-            this.MailAddress = MailAddress;
-            this.PassWord = PassWord;
-            this.Port = Port;
-            this.Ssl = Ssl;
+            this.Smtp = smtp;
+            this.MailAddress = mailAddress;
+            this.PassWord = passWord;
+            this.Port = port;
+            this.Ssl = ssl;
             return true;
         }
     }
