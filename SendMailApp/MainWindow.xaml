@@ -22,7 +22,7 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*"/>
-            <ColumnDefinition Width="45*"/>
+            <ColumnDefinition Width="40*"/>
             <ColumnDefinition Width="15*"/>
             <ColumnDefinition Width="35*"/>
         </Grid.ColumnDefinitions>
@@ -34,7 +34,7 @@
         <TextBlock Grid.Row="2" HorizontalAlignment="Right" Text="Cc："
                    VerticalAlignment="Center" FontSize="20"/>
         <TextBlock Grid.Row="3" HorizontalAlignment="Right" Text="Bcc："
-                   VerticalAlignment="Center" FontSize="20" Grid.ColumnSpan="2" Margin="0,20,444,20"/>
+                   VerticalAlignment="Center" FontSize="20"  />
         <TextBlock Grid.Row="4" HorizontalAlignment="Right" Text="本文："
                    VerticalAlignment="Center" FontSize="20"/>
 
@@ -44,7 +44,7 @@
         <TextBox x:Name="tbBcc" Grid.Row="3" Grid.Column="1" Margin="7" FontSize="20"/>
         <TextBox x:Name="tbBody" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Margin="7" FontSize="20"/>
 
-        <StackPanel Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" Grid.Row="5"  Orientation="Horizontal">
+        <StackPanel Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Right" Grid.Row="5"  Orientation="Horizontal">
             <Button x:Name="btCancel" Content="キャンセル" Margin="10" Width="150" FontSize="24" Click="btCancel_Click"/>
             <Button x:Name="btOK" Content="送信" Margin="10" Width="120" FontSize="24" Click="btOK_Click"/>
         </StackPanel>
