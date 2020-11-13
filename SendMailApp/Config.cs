@@ -65,6 +65,7 @@ namespace SendMailApp {
             return true;
         }
 
+        //シリアル化
         public void Serialise() {
             try {
                 Config cf = instance;
@@ -74,11 +75,12 @@ namespace SendMailApp {
                 }
             }
             catch (Exception) {
-
+                
             }
             
         }
 
+        //逆シリアル化
         public void DeSerislise() {
             try {
                 using (var reader = XmlReader.Create("config.xml")) {
@@ -87,7 +89,7 @@ namespace SendMailApp {
                 }
             }
             catch (Exception) {
-
+                
             }
             
         }

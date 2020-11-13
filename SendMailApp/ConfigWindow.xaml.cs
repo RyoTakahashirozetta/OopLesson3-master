@@ -22,6 +22,12 @@ namespace SendMailApp {
     public partial class ConfigWindow : Window {
         public ConfigWindow() {
             InitializeComponent();
+            tbPassWord.PasswordChanged += anythingChanged;
+            tbPort.TextChanged += anythingChanged;
+            tbSender.TextChanged += anythingChanged;
+            tbSmtp.TextChanged += anythingChanged;
+            tbUserName.TextChanged += anythingChanged;
+
         }
 
         
@@ -39,29 +45,61 @@ namespace SendMailApp {
 
         //適用（更新）
         private void btApply_Click(object sender, RoutedEventArgs e) {
-            (Config.GetInstance()).UpdataStatus(
-                tbSmtp.Text,
-                tbUserName.Text,
-                tbPassWord.Password,
-                int.Parse(tbPort.Text),
-                cbSsl.IsChecked ?? false);
+            try {
+                if (tbPassWord.Password == "" || tbSender.Text == "" || tbPort.Text == "" ||
+                tbSmtp.Text == "" || tbUserName.Text == "") {
+                    MessageBox.Show("未入力の項目があります");
+                }
 
+
+            (Config.GetInstance()).UpdataStatus(
+            tbSmtp.Text,
+            tbUserName.Text,
+            tbPassWord.Password,
+            int.Parse(tbPort.Text),
+            cbSsl.IsChecked ?? false);
+            }
+            catch (Exception) {
+            }
+            
+     
 
         }
 
         //OKボタン
         private void btOk_Click(object sender, RoutedEventArgs e) {
-            btApply_Click(sender,e);
-            this.Close();
+            try {
+                if (tbPassWord.Password == "" || tbSender.Text == "" || tbPort.Text == "" ||
+                tbSmtp.Text == "" || tbUserName.Text == "") {
+                    MessageBox.Show("未入力の項目があります");
+                }
+                else {
+                    btApply_Click(sender, e);
+                    this.Close();
+                }
+            }
+            catch (Exception) {
+                MessageBox.Show("保存できません");
+            }
+            
+                    
+            
+
         }
 
         //キャンセルボタン
         private void btCancel_Click(object sender, RoutedEventArgs e) {
-            this.Close();
+            TextBoxChange();
+
         }
+
+       
 
         //ロード時に一度だけ呼び出される
         private void Window_Loaded(object sender, RoutedEventArgs e) {
+            if (true) {
+
+            }
             Config cf = Config.GetInstance();
 
             tbSmtp.Text = cf.Smtp;
@@ -72,6 +110,29 @@ namespace SendMailApp {
 
         }
 
-       
+        bool change = false;
+        int count = 0;
+
+        private void anythingChanged<T>(object sender, T e) where T : EventArgs {
+            change = true;
+            count++;
+        }
+
+        private void TextBoxChange() {
+            if (count > 5) {
+                MessageBoxResult result = MessageBox.Show("変更が反映されていません", "メッセージボックス", MessageBoxButton.OKCancel);
+                if (result == MessageBoxResult.OK) {
+                    this.Close();
+                }
+                else if (result == MessageBoxResult.Cancel) {
+
+                }
+
+            }
+            else {
+                this.Close();
+            }
+        }
+
     }
 }
