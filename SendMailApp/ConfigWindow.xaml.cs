@@ -61,7 +61,8 @@ namespace SendMailApp {
             }
             catch (Exception) {
             }
-            
+
+            count = 5;
      
 
         }
