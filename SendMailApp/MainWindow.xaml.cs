@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -45,6 +46,12 @@ namespace SendMailApp {
             try {
                 Config cf = Config.GetInstance();
                 MailMessage msg = new MailMessage(cf.MailAddress,tbTo.Text);
+
+                for (int i = 0; i < lbtmp.Items.Count; i++) {
+                    Attachment attachment = new System.Net.Mail.Attachment(lbtmp.Items[i].ToString());
+                    msg.Attachments.Add(attachment);
+                }
+                
 
                 if (tbCc.Text != "") {
                     msg.CC.Add(tbCc.Text);
@@ -112,6 +119,33 @@ namespace SendMailApp {
                 MessageBox.Show(ex.Message);
             }
            
+        }
+
+
+        private void btDeletetmp_Click(object sender, RoutedEventArgs e) {
+            lbtmp.Items.RemoveAt(lbtmp.SelectedIndex);
+        }
+
+        private void btAddtmp_Click(object sender, RoutedEventArgs e) {
+            //OpenFileDialogクラスのインスタンスを作成
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            
+            //はじめに表示されるフォルダを指定する
+            //指定しない（空の文字列）の時は、現在のディレクトリが表示される
+            ofd.InitialDirectory = @"C:\";
+            //[ファイルの種類]に表示される選択肢を指定する
+            //指定しないとすべてのファイルが表示される
+            ofd.Filter = "すべてのファイル(*.*)|*.*";
+            //タイトルを設定する
+            ofd.Title = "開くファイルを選択してください";
+           
+
+            //ダイアログを表示する
+            if (ofd.ShowDialog() == true) {
+                //OKボタンがクリックされたとき、選択されたファイル名を表示する
+                lbtmp.Items.Add(ofd.FileName);
+            }
         }
     }
 }
